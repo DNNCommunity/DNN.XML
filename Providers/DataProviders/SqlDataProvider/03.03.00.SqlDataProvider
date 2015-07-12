@@ -1,0 +1,144 @@
+﻿/************************************************************/
+/*****              SqlDataProvider                     *****/
+/*****                                                  *****/
+/*****                                                  *****/
+/***** Note: To manually execute this script you must   *****/
+/*****       perform a search and replace operation     *****/
+/*****       for {databaseOwner} and {objectQualifier}  *****/
+/*****                                                  *****/
+/************************************************************/
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+/***| Tables |*************************************************************************************/
+
+IF NOT EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}Xml_Parameter]') AND OBJECTPROPERTY(id, N'IsTable') = 1)
+BEGIN
+	CREATE TABLE {databaseOwner}[{objectQualifier}Xml_Parameter]
+    (
+		[ParameterID]   int IDENTITY(1,1) NOT NULL PRIMARY KEY CLUSTERED,
+		[ModuleID]      int NOT NULL,
+		[Purpose]       varchar (50)  NULL,
+		[Name]          varchar (50)  NOT NULL,
+		[Type]          varchar (50)  NOT NULL,
+		[Argument]      nvarchar (2000)  NULL,
+    )
+	
+END
+GO
+
+/***| Remove Stored Procedures to be replaced |**************************/
+
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}Xml_Parameter_Add]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	DROP PROCEDURE {databaseOwner}{objectQualifier}Xml_Parameter_Add
+GO
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}Xml_Parameter_GetList]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	DROP PROCEDURE {databaseOwner}{objectQualifier}Xml_Parameter_GetList
+GO
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}Xml_Parameter_Get]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	DROP PROCEDURE {databaseOwner}{objectQualifier}Xml_Parameter_Get
+GO
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}Xml_Parameter_Update]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	DROP PROCEDURE {databaseOwner}{objectQualifier}Xml_Parameter_Update
+GO
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}Xml_Parameter_Delete]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	DROP PROCEDURE {databaseOwner}{objectQualifier}Xml_Parameter_Delete
+GO
+
+
+/***| Create Stored Procedures |**************************************************************************/
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}Xml_Parameter_GetList]
+	@ModuleID	INT,
+	@Purpose    VarChar(50)
+AS
+BEGIN
+	SET NOCOUNT ON;
+
+	SELECT	ParameterID, ModuleID, [Name], [Type], Argument
+	FROM	{objectQualifier}Xml_Parameter
+	WHERE	ModuleID = @ModuleID and Purpose =@Purpose
+END
+
+GO
+
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}Xml_Parameter_Get]
+	@ParameterID	INT
+AS
+BEGIN
+	SET NOCOUNT ON;
+
+	SELECT	ParameterID, ModuleID, [Name], [Type], Argument
+	FROM	{objectQualifier}Xml_Parameter
+	WHERE	ParameterID = @ParameterID
+END
+
+GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}Xml_Parameter_Update]
+	@ParameterID	INT,
+	@Name			VARCHAR(50),
+	@Type			VARCHAR(50),
+	@Argument		NVARCHAR(2000)
+AS
+BEGIN
+	UPDATE	{objectQualifier}Xml_Parameter
+	SET		[Name]   = @Name, 
+			[Type]   = @Type, 
+			Argument = @Argument
+	WHERE	ParameterID = @ParameterID
+END
+
+GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}Xml_Parameter_Delete]
+	@ParameterID	INT
+AS
+BEGIN
+	DELETE FROM {objectQualifier}Xml_Parameter
+	WHERE	ParameterID = @ParameterID
+END
+
+GO
+
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}Xml_Parameter_Add]
+	@ModuleID	INT,
+	@Purpose    VARCHAR(50),
+    @Name		VARCHAR(50),
+	@Type		VARCHAR(50),
+	@Argument	NVARCHAR(2000)
+	
+AS
+BEGIN
+	INSERT INTO {objectQualifier}Xml_Parameter(ModuleID, Purpose ,[Name], [Type], Argument)
+	VALUES(@ModuleID, @Purpose, @Name, @Type, @Argument)
+END
+
+GO
+
+UPDATE {databaseOwner}[{objectQualifier}ModuleSettings]
+SET     SettingName = N'XML_XmlSourceUrl'
+FROM    {databaseOwner}[{objectQualifier}DesktopModules] dm INNER JOIN
+     {databaseOwner}[{objectQualifier}ModuleDefinitions] md ON dm.DesktopModuleID = md.DesktopModuleID INNER JOIN
+       {databaseOwner}[{objectQualifier}ModuleSettings] ms INNER JOIN
+     {databaseOwner}[{objectQualifier}Modules] m ON ms.ModuleID = m.ModuleID ON md.ModuleDefID = m.ModuleDefID
+WHERE (ms.SettingName = 'xmlsrc') AND (dm.ModuleName = N'DNN_XML')
+GO
+
+UPDATE {databaseOwner}[{objectQualifier}ModuleSettings]
+SET     SettingName = N'XML_XslTrans'
+FROM    {databaseOwner}[{objectQualifier}DesktopModules] dm INNER JOIN
+     {databaseOwner}[{objectQualifier}ModuleDefinitions] md ON dm.DesktopModuleID = md.DesktopModuleID INNER JOIN
+       {databaseOwner}[{objectQualifier}ModuleSettings] ms INNER JOIN
+     {databaseOwner}[{objectQualifier}Modules] m ON ms.ModuleID = m.ModuleID ON md.ModuleDefID = m.ModuleDefID
+WHERE (ms.SettingName = 'xslsrc') AND (dm.ModuleName = N'DNN_XML')
+GO

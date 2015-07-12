@@ -1,0 +1,16 @@
+﻿Install\Module\XML_03.01.00_Install.resources
+Install\Module\XML_03.03.00_Install.resources
+Install\Module\XML_03.03.02_Install.resources
+Install\Module\XML_04.03.03_Install.resources
+Install\Module\XML_04.03.04_Install.resources
+Install\Module\XML_04.03.05_Install.resources
+Install\Module\XML_06.00.00_Install.resources
+App_Code\XML\Components\
+App_Code\XML\Handlers\
+App_Code\XML\Parameters\
+App_Code\XML\Providers\
+DesktopModules\Xml\Parameters\ParameterEditor.ascx.vb
+DesktopModules\XML\Providers\DataProviders\SqlDataProvider\04.03.05.SqlDataProvider
+DesktopModules\XML\EditXml.ascx.vb
+DesktopModules\XML\XmlModule.ascx.vb
+DesktopModules\XML\Uninstall.SqlDataProvider

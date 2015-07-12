@@ -1,0 +1,258 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="dshXslTrans.Text" xml:space="preserve">
+    <value>Rendering Settings</value>
+  </data>
+  <data name="dshXmlSource.Text" xml:space="preserve">
+    <value>XML Data Source Settings</value>
+  </data>
+  <data name="ModuleHelp.Text" xml:space="preserve">
+    <value>&lt;h2&gt;
+    About the XML Module&lt;/h2&gt;
+&lt;p&gt;
+    The XML module uses providers to either retrieve XML from several sources or to
+    render them.
+&lt;/p&gt;
+&lt;p&gt;
+    Please visit &lt;a href="http://dnnxml.codeplex.com/documentation"&gt;http://dnnxml.codeplex.com/documentation&lt;/a&gt;
+    for further documentation.&lt;/p&gt;</value>
+  </data>
+  <data name="dshAdvancedTitle.Text" xml:space="preserve">
+    <value>Advanced Options</value>
+  </data>
+  <data name="dshUrlParams.Text" xml:space="preserve">
+    <value>Querystring Parameters</value>
+  </data>
+  <data name="Save.Text" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="Cancel.Text" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="Delete.Text" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="ControlTitle_edit.Text" xml:space="preserve">
+    <value>XML Module Configuration</value>
+  </data>
+  <data name="XmlWebPermisssion.ErrorMessage" xml:space="preserve">
+    <value>WebRequests to the configured external xml source are not permitted (Medium trust)</value>
+  </data>
+  <data name="XslWebPermisssion.ErrorMessage" xml:space="preserve">
+    <value>WebRequests to the configured external xsl stylesheet are not permitted (Medium trust)</value>
+  </data>
+  <data name="lblXmlSource.Text" xml:space="preserve">
+    <value>In this section, you can define the source of your XML data. It can be provided as a local file or be queried via http using dynamic querystrings.</value>
+  </data>
+  <data name="lblOutput.Text" xml:space="preserve">
+    <value>By default the XML Module will render the output (as HTML) inside the module. However it is also possible to create downloads. </value>
+  </data>
+  <data name="plOutput.Text" xml:space="preserve">
+    <value>Output</value>
+  </data>
+  <data name="plOutput.Help" xml:space="preserve">
+    <value>You can output the transformation result inside the normal DotNetNuke page or as a separate Download.</value>
+  </data>
+  <data name="OutputInline.Text" xml:space="preserve">
+    <value>inside module</value>
+  </data>
+  <data name="OutputLink.Text" xml:space="preserve">
+    <value>as link to a download</value>
+  </data>
+  <data name="OutputResponse.Text" xml:space="preserve">
+    <value>as download</value>
+  </data>
+  <data name="plContentType.Text" xml:space="preserve">
+    <value>Content Type</value>
+  </data>
+  <data name="plContentType.Help" xml:space="preserve">
+    <value>Define the type of the download. Only used if Output is set to a Download type</value>
+  </data>
+  <data name="lblSearch.Text" xml:space="preserve">
+    <value>The Output of the XML Module is not searchable in DotNetNuke Search by default. However, if you want to allow searching and your setup doesn't depend on dynamic parameters you can switch it on.</value>
+  </data>
+  <data name="plIndexRun.Text" xml:space="preserve">
+    <value>Allow Indexing</value>
+  </data>
+  <data name="plIndexRun.Help" xml:space="preserve">
+    <value>The module must be indexed to appear in DotNetNuke Search result. Searching is switched off by default. Please note that the frequency of the search is defined by the host administrator. You can define here how often this module will get included.</value>
+  </data>
+  <data name="IndexRunNever.Text" xml:space="preserve">
+    <value>never (search is disabled)</value>
+  </data>
+  <data name="IndexRunNextRun.Text" xml:space="preserve">
+    <value>only on next run</value>
+  </data>
+  <data name="IndexRunAlways.Text" xml:space="preserve">
+    <value>always</value>
+  </data>
+  <data name="IndexRunOncePerHour.Text" xml:space="preserve">
+    <value>once per hour</value>
+  </data>
+  <data name="IndexRunOncePerDay.Text" xml:space="preserve">
+    <value>once per day</value>
+  </data>
+  <data name="lblDynamicParameter.Text" xml:space="preserve">
+    <value>Index run is disabled as there are dynamic parameters for either query string or xsl args.</value>
+  </data>
+  <data name="cmdClearSearchIndex.Text" xml:space="preserve">
+    <value>Clear Search Index</value>
+  </data>
+  <data name="IsValueRequired.Header" xml:space="preserve">
+    <value>Required</value>
+  </data>
+  <data name="Required.Header" xml:space="preserve">
+    <value>Required</value>
+  </data>
+  <data name="lblEnableByQuerystring.Text" xml:space="preserve">
+    <value>For some use cases it is nescessary that the module only runs if the request contains a defined querystring parameter/ value pair.</value>
+  </data>
+  <data name="plEnableParam.Text" xml:space="preserve">
+    <value>Querystring param</value>
+  </data>
+  <data name="plEnableParam.Help" xml:space="preserve">
+    <value>If Querystring param and value has been set, the module will only run if this querystring pair is used in the request.</value>
+  </data>
+  <data name="plEnableValue.Text" xml:space="preserve">
+    <value>Querystring value</value>
+  </data>
+  <data name="plEnableValue.Help" xml:space="preserve">
+    <value>If Querystring param and value has been set, the module will only run if this querystring pair is used in the request.&lt;br/&gt; 
+If Querystring param is set but &lt;b&gt;value&lt;/b&gt; is missing, the module will be disabled for any usage of a not empty value.</value>
+  </data>
+  <data name="cmdClearEnableByParam.Text" xml:space="preserve">
+    <value>Clear/ Disable</value>
+  </data>
+  <data name="File.Text" xml:space="preserve">
+    <value>File ( A File on Your Site )</value>
+  </data>
+  <data name="HttpRequest.Text" xml:space="preserve">
+    <value>URL ( A Link to an External Resource )</value>
+  </data>
+  <data name="lblXmlSourceType.Text" xml:space="preserve">
+    <value>Data Source Typ:</value>
+  </data>
+  <data name="Sql.Text" xml:space="preserve">
+    <value>SQL (A Set of Database Queries against Sql Server or OleDB)</value>
+  </data>
+  <data name="lblXmlRenderingType.Text" xml:space="preserve">
+    <value>Select the rendering provider.</value>
+  </data>
+</root>

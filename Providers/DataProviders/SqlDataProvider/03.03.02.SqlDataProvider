@@ -1,0 +1,108 @@
+﻿/************************************************************/
+/*****              SqlDataProvider                     *****/
+/*****                                                  *****/
+/*****                                                  *****/
+/***** Note: To manually execute this script you must   *****/
+/*****       perform a search and replace operation     *****/
+/*****       for {databaseOwner} and {objectQualifier}  *****/
+/*****                                                  *****/
+/************************************************************/
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+/***| Tables |*************************************************************************************/
+
+ALTER TABLE {databaseOwner}[{objectQualifier}Xml_Parameter] 
+ADD ValueIsRequired bit NOT NULL DEFAULT 0
+GO
+
+/***| Remove Stored Procedures to be replaced |**************************/
+
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}Xml_Parameter_Add]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}Xml_Parameter_Add]
+GO
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}Xml_Parameter_GetList]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}Xml_Parameter_GetList]
+GO
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}Xml_Parameter_Get]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}Xml_Parameter_Get]
+GO
+IF EXISTS (SELECT * FROM dbo.sysobjects WHERE id = OBJECT_ID(N'{databaseOwner}[{objectQualifier}Xml_Parameter_Update]') AND OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	DROP PROCEDURE {databaseOwner}[{objectQualifier}Xml_Parameter_Update]
+GO
+
+
+
+/***| Create Stored Procedures |**************************************************************************/
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}Xml_Parameter_GetList]
+	@ModuleID	INT,
+	@Purpose    VarChar(50)
+AS
+BEGIN
+	SET NOCOUNT ON;
+
+	SELECT	ParameterID, ModuleID, [Name], [Type], Argument, ValueIsRequired
+	FROM	{objectQualifier}Xml_Parameter
+	WHERE	ModuleID = @ModuleID and Purpose =@Purpose
+END
+
+GO
+
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}Xml_Parameter_Get]
+	@ParameterID	INT
+AS
+BEGIN
+	SET NOCOUNT ON;
+
+	SELECT	ParameterID, ModuleID, [Name], [Type], Argument, ValueIsRequired
+	FROM	{objectQualifier}Xml_Parameter
+	WHERE	ParameterID = @ParameterID
+END
+
+GO
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}Xml_Parameter_Update]
+	@ParameterID	INT,
+	@Name			VARCHAR(50),
+	@Type			VARCHAR(50),
+	@Argument		NVARCHAR(2000),
+	@ValueIsRequired bit
+AS
+BEGIN
+	UPDATE	{objectQualifier}Xml_Parameter
+	SET		[Name]   = @Name, 
+			[Type]   = @Type, 
+			Argument = @Argument,
+			ValueIsRequired = @ValueIsRequired
+	WHERE	ParameterID = @ParameterID
+END
+
+GO
+
+
+CREATE PROCEDURE {databaseOwner}[{objectQualifier}Xml_Parameter_Add]
+	@ModuleID	INT,
+	@Purpose    VARCHAR(50),
+    @Name		VARCHAR(50),
+	@Type		VARCHAR(50),
+	@Argument	NVARCHAR(2000),
+	@ValueIsRequired bit
+	
+AS
+BEGIN
+	INSERT INTO {objectQualifier}Xml_Parameter(ModuleID, Purpose ,[Name], [Type], Argument, ValueIsRequired)
+	VALUES(@ModuleID, @Purpose, @Name, @Type, @Argument, @ValueIsRequired)
+END
+
+GO
+
+

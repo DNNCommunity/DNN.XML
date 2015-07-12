@@ -1,0 +1,60 @@
+﻿/************************************************************/
+/*****              SqlDataProvider                     *****/
+/*****                                                  *****/
+/*****                                                  *****/
+/***** Note: To manually execute this script you must   *****/
+/*****       perform a search and replace operation     *****/
+/*****       for {databaseOwner} and {objectQualifier}  *****/
+/*****                                                  *****/
+/************************************************************/
+
+/***| Set Data Source Provider to 'FileProvider' for all files |*************************************************************************************/
+INSERT INTO {databaseOwner}[{objectQualifier}ModuleSettings]
+                         (ModuleID, SettingName, SettingValue, CreatedByUserID, LastModifiedByUserID, CreatedOnDate, LastModifiedOnDate)
+SELECT        MS.ModuleID, 'XML_SourceProvider', 'FileProvider', MS.CreatedByUserID, MS.LastModifiedByUserID, MS.CreatedOnDate, MS.LastModifiedOnDate
+FROM            {databaseOwner}[{objectQualifier}DesktopModules] AS dm INNER JOIN
+                         {databaseOwner}[{objectQualifier}ModuleDefinitions] AS md ON dm.DesktopModuleID = md.DesktopModuleID INNER JOIN
+                         {databaseOwner}[{objectQualifier}ModuleSettings] AS MS INNER JOIN
+                         {databaseOwner}[{objectQualifier}Modules] AS m ON MS.ModuleID = m.ModuleID ON md.ModuleDefID = m.ModuleDefID
+WHERE        (MS.SettingName = N'XML_XmlSourceUrl') AND (dm.ModuleName = N'DNN_XML') AND  NOT (MS.SettingValue LIKE N'http://%' or MS.SettingValue LIKE N'https://%')
+GO
+
+/***| Set Data Source Provider to 'HttpRequestProvider' for all http protocols |*************************************************************************************/
+INSERT INTO {databaseOwner}[{objectQualifier}ModuleSettings]
+                         (ModuleID, SettingName, SettingValue, CreatedByUserID, LastModifiedByUserID, CreatedOnDate, LastModifiedOnDate)
+SELECT        MS.ModuleID, 'XML_SourceProvider', 'HttpRequestProvider', MS.CreatedByUserID, MS.LastModifiedByUserID, MS.CreatedOnDate, MS.LastModifiedOnDate
+FROM            {databaseOwner}[{objectQualifier}DesktopModules] AS dm INNER JOIN
+                         {databaseOwner}[{objectQualifier}ModuleDefinitions] AS md ON dm.DesktopModuleID = md.DesktopModuleID INNER JOIN
+                         {databaseOwner}[{objectQualifier}ModuleSettings] AS MS INNER JOIN
+                         {databaseOwner}[{objectQualifier}Modules] AS m ON MS.ModuleID = m.ModuleID ON md.ModuleDefID = m.ModuleDefID
+WHERE        (MS.SettingName = N'XML_XmlSourceUrl') AND (dm.ModuleName = N'DNN_XML') AND (MS.SettingValue LIKE N'http://%' or MS.SettingValue LIKE N'https://%')
+GO
+
+/***| Set Rendering Provider to 'Xml_RenderingProvider' for all xml modules |*************************************************************************************/
+INSERT INTO {databaseOwner}[{objectQualifier}ModuleSettings]
+                         (ModuleID, SettingName, SettingValue, CreatedByUserID, LastModifiedByUserID, CreatedOnDate, LastModifiedOnDate)
+SELECT        MS.ModuleID, 'Xml_RenderingProvider', 'XslCompiledTransformProvider', MS.CreatedByUserID, MS.LastModifiedByUserID, MS.CreatedOnDate, MS.LastModifiedOnDate
+FROM            {databaseOwner}[{objectQualifier}DesktopModules] AS dm INNER JOIN
+                         {databaseOwner}[{objectQualifier}ModuleDefinitions] AS md ON dm.DesktopModuleID = md.DesktopModuleID INNER JOIN
+                         {databaseOwner}[{objectQualifier}ModuleSettings] AS MS INNER JOIN
+                         {databaseOwner}[{objectQualifier}Modules] AS m ON MS.ModuleID = m.ModuleID ON md.ModuleDefID = m.ModuleDefID
+WHERE        (MS.SettingName = N'XML_XmlSourceUrl') AND (dm.ModuleName = N'DNN_XML') 
+GO
+
+/*** It is the XML module! ***/
+UPDATE  MD
+SET
+    FriendlyName = 'XML'
+FROM    
+        {databaseOwner}[{objectQualifier}DesktopModules] AS DM INNER JOIN
+        {databaseOwner}[{objectQualifier}ModuleDefinitions] AS MD 
+        ON DM.DesktopModuleID = MD.DesktopModuleID
+WHERE        
+    (DM.ModuleName = N'DNN_XML') AND (MD.FriendlyName = N'XML/XSL')
+GO
+
+/*** Rename parameters ***/
+UPDATE     {databaseOwner}[{objectQualifier}Xml_Parameter]
+SET              Purpose = 'HttpRequestProvider'
+WHERE     (Purpose = 'URL')
+GO

@@ -1,0 +1,2 @@
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="XmlModule.ascx.cs" Inherits="DotNetNuke.Modules.Xml.XmlModule" %>
+<asp:HyperLink id="lnkShowContent" runat="server" CssClass="Normal" resourcekey="lnkShowContent">Show Content</asp:HyperLink>

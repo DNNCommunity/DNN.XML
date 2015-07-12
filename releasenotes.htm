@@ -1,0 +1,64 @@
+﻿<h4>Release Notes</h4>
+<h2>DotNetNuke XML Module 06.00.03
+</h2>
+<p>
+    This release is compiled against the .Net 3.5 Framework using VS2012.<br />
+    The minimum DotNetNuke core version is 5.6.2
+</p>
+<p>
+    Maintenance release
+</p>
+<div>
+    <h4>06.00.04</h4>
+    <ul>
+        <li>Fix: Layout information has been ignored, preventing output like csv.</li>
+        <li>document() function can be enabled in web.config by setting enableDocument="true" in web config for xslCompiledTransformProvider</li>
+        <li>Converted to VS2012</li>
+    </ul>
+</div>
+<div>
+    <h4>06.00.02</h4>
+    <ul>
+        <li>HttpRequest did not work in Medium Trust</li>
+    </ul>
+</div>
+<div>
+    <h4>06.00.01</h4>
+    <ul>
+        <li>This release circumvents a bug in DNN6.0.0 which stopped the HttpRequest provider. It introduces no new features.</li>
+    </ul>
+</div>
+
+<div>
+    <h4>06.00.00</h4>
+ 
+
+    New Features
+    <ul>
+        <li>Data Sources and Rendering are now implemented as providers. New data sources 
+        and rendering engines can be added as DotNetNuke providers</li>
+        <li>HttpRequest-provider<ul>
+            <li>Cacheable DataSources</li>
+            <li>URL can be defined using TokenReplace</li>
+        </ul>
+        </li>
+        <li>XslCompiledTransform-provider supports now new XSLT Extension object. These 
+        actions are currently supported:<ul>
+            <li>setting of page title, page description, module title, </li>
+            <li>loading of CSS and javascript files and statements,</li>
+            <li>calling TokenReplace to query additonal contect information</li>
+        </ul>
+        </li>
+    </ul>
+    New Architecture
+    <ul>
+        <li>The module switched from VB.NET to C#</li>
+        <li>The project was converted from WSP to a Web Application Project (WAP) </li>
+        <li>VS2010 project file</li>
+        <li>Automatic package creation using MsBuild. Source package requires
+        <a href="http://msbuildtasks.tigris.org/">msbuildtasks</a> </li>
+        <li>Providers build on DotNetNuke.Components, fully supporting DotNetNuke extension 
+        model</li>
+    </ul>
+</div>
+

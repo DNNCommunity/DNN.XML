@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+		<xsd:element name="root" msdata:IsDataSet="true">
+			<xsd:complexType>
+				<xsd:choice maxOccurs="unbounded">
+					<xsd:element name="data">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" />
+							<xsd:attribute name="type" type="xsd:string" />
+							<xsd:attribute name="mimetype" type="xsd:string" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="resheader">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required" />
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:choice>
+			</xsd:complexType>
+		</xsd:element>
+	</xsd:schema>
+	<resheader name="ResMimeType">
+		<value>text/microsoft-resx</value>
+	</resheader>
+	<resheader name="Version">
+		<value>1.0.0.0</value>
+	</resheader>
+	<resheader name="Reader">
+		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=1.0.3300.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<resheader name="Writer">
+		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=1.0.3300.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+
+	<data name="StaticValue.Text">
+		<value>Static Value</value>
+	</data>
+	<data name="PassThrough.Text">
+		<value>Pass-Through QueryString</value>
+	</data>
+	<data name="FormPassThrough.Text">
+		<value>Pass-Through Form Post</value>
+	</data>
+	<data name="UserCustomProperty.Text">
+		<value>Custom User Property</value>
+	</data>
+	<data name="PortalID.Text">
+		<value>Portal ID</value>
+	</data>
+	<data name="PortalName.Text">
+		<value>Portal Name</value>
+	</data>
+	<data name="TabID.Text">
+		<value>Tab ID</value>
+	</data>
+	<data name="UserID.Text">
+		<value>User ID</value>
+	</data>
+  <data name="ModuleID.Text">
+    <value>Module ID</value>
+  </data>
+	<data name="UserUsername.Text">
+		<value>User's Username</value>
+	</data>
+	<data name="UserFirstName.Text">
+		<value>User's First Name</value>
+	</data>
+	<data name="UserLastName.Text">
+		<value>User's Last Name</value>
+	</data>
+	<data name="UserFullName.Text">
+		<value>User's Display Name</value>
+	</data>
+	<data name="UserEmail.Text">
+		<value>User's Email</value>
+	</data>
+	<data name="UserWebsite.Text">
+		<value>User's Website</value>
+	</data>
+	<data name="UserIM.Text">
+		<value>User's IM</value>
+	</data>
+	<data name="UserStreet.Text">
+		<value>User's Street</value>
+	</data>
+	<data name="UserUnit.Text">
+		<value>User's Unit</value>
+	</data>
+	<data name="UserCity.Text">
+		<value>User's City</value>
+	</data>
+	<data name="UserCountry.Text">
+		<value>User's Country</value>
+	</data>
+	<data name="UserRegion.Text">
+		<value>User's Region</value>
+	</data>
+	<data name="UserPostalCode.Text">
+		<value>User's Postal Code</value>
+	</data>
+	<data name="UserPhone.Text">
+		<value>User's Phone</value>
+	</data>
+	<data name="UserCell.Text">
+		<value>User's Cell</value>
+	</data>
+	<data name="UserFax.Text">
+		<value>User's Fax</value>
+	</data>
+	<data name="UserLocale.Text">
+		<value>User's Locale</value>
+	</data>
+	<data name="UserTimeZone.Text">
+		<value>User's TimeZone</value>
+	</data>
+	<data name="UserIsAuthorized.Text">
+		<value>User's Authorized Flag</value>
+	</data>
+	<data name="UserIsLockedOut.Text">
+		<value>User's Lock Out Flag</value>
+	</data>
+	<data name="UserIsSuperUser.Text">
+		<value>User's SuperUser Flag</value>
+	</data>
+	<data name="Save.Text">
+		<value>Save</value>
+	</data>
+	<data name="Cancel.Text">
+		<value>Cancel</value>
+	</data>
+	<data name="Delete.Text">
+		<value>Delete</value>
+	</data>
+	<data name="cmdAddParam.Text">
+		<value>Add Parameter</value>
+	</data>
+	<data name="ParameterInvalid.Header">
+		<value>Invalid Parameter</value>
+	</data>
+	<data name="ParameterInvalid.Text">
+		<value>The specified parameter options are invalid. Ensure the &lt;b&gt;Name&lt;/b&gt; and, if required, type argument are both specified.</value>
+	</data>
+	<data name="DeleteParamConfirmation.Text">
+		<value>Are you sure you want to remove this item from the data store? Once removed it cannot be retrieved.</value>
+	</data>
+	<data name="Name.Header">
+		<value>Name</value>
+	</data>
+	<data name="Value.Header">
+		<value>Data Origin </value>
+	</data>
+	<data name="Type.Header">
+		<value>Type</value>
+	</data>
+	<data name="lblParamArgument.Text">
+		<value>Arg:</value>
+	</data>
+	<data name="HomeDirectory.Text">
+		<value>Home Directrory</value>
+	</data>
+	<data name="CurrentCulture.Text">
+		<value>Current Culture</value>
+	</data>
+	<data name="ParameterFallback.Text">
+		<value>Fallback</value>
+	</data>
+  <data name="IsValueRequired.Header">
+    <value>Required</value>
+  </data>
+  <data name="Required.Header">
+    <value>Required</value>
+  </data>
+</root>
