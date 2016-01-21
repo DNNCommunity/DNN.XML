@@ -128,7 +128,8 @@ namespace DotNetNuke.Modules.Xml.Components
         /// </summary>
         public void ClearSearchIndex()
         {
-            DataProvider.Instance().DeleteSearchItems(ModuleId);
+            // HACK: next line is commented to avoid Error CS1061  'DataProvider' does not contain a definition for 'DeleteSearchItems' and no extension method 'DeleteSearchItems' accepting a first argument of type 'DataProvider' could be found(are you missing a using directive or an assembly reference ?)	Xml D:\Materijali\SD\Portal2015\Dev\Prototips\DNN.XML\Components\XmlBaseController.cs   132 Active
+            //DataProvider.Instance().DeleteSearchItems(ModuleId);
         }
 
 
