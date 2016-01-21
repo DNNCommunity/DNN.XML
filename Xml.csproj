@@ -5,7 +5,7 @@
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
-  <Import Project="$(MSBuildExtensionsPath)\MSBuildCommunityTasks\MSBuild.Community.Tasks.Targets" />
+  <Import Project="BuildScripts\MSBuild.Community.Tasks.Targets" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -96,9 +96,7 @@
     <Import Include="System.Web.UI.HtmlControls" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseControls\BaseSourceSettings.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
+    <Compile Include="BaseControls\BaseSourceSettings.cs" />
     <Compile Include="Components\BaseController.cs" />
     <Compile Include="Components\Credential.cs" />
     <Compile Include="Components\ExtensionObject.cs" />
@@ -111,7 +109,6 @@
     <Compile Include="Providers\XmlRenderingProvider\IRequiresParentModule.cs" />
     <Compile Include="XmlModule.ascx.cs">
       <DependentUpon>XmlModule.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="XmlModule.ascx.designer.cs">
       <DependentUpon>XmlModule.ascx</DependentUpon>
@@ -122,7 +119,6 @@
     </Compile>
     <Compile Include="EditXml.ascx.cs">
       <DependentUpon>EditXml.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="EditXml.ascx.designer.cs">
       <DependentUpon>EditXml.ascx</DependentUpon>
@@ -130,7 +126,6 @@
     <Compile Include="Parameters\ParameterController.cs" />
     <Compile Include="Parameters\ParameterEditor.ascx.cs">
       <DependentUpon>ParameterEditor.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Parameters\ParameterEditor.ascx.designer.cs">
       <DependentUpon>ParameterEditor.ascx</DependentUpon>
@@ -143,7 +138,6 @@
     <Compile Include="Providers\XmlDataProvider\File\Provider.cs" />
     <Compile Include="Providers\XmlDataProvider\File\Settings.ascx.cs">
       <DependentUpon>Settings.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Providers\XmlDataProvider\File\Settings.ascx.designer.cs">
       <DependentUpon>Settings.ascx</DependentUpon>
@@ -151,7 +145,6 @@
     <Compile Include="Providers\XmlDataProvider\HttpRequest\Provider.cs" />
     <Compile Include="Providers\XmlDataProvider\HttpRequest\Settings.ascx.cs">
       <DependentUpon>Settings.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Providers\XmlDataProvider\HttpRequest\Settings.ascx.designer.cs">
       <DependentUpon>Settings.ascx</DependentUpon>
@@ -160,15 +153,12 @@
     <Compile Include="Providers\XmlRenderingProvider\XmlRenderingProvider.cs" />
     <Compile Include="Providers\XmlRenderingProvider\XslCompiledTransform\Settings.ascx.cs">
       <DependentUpon>Settings.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Providers\XmlRenderingProvider\XslCompiledTransform\Settings.ascx.designer.cs">
       <DependentUpon>Settings.ascx</DependentUpon>
     </Compile>
     <Compile Include="Providers\XmlRenderingProvider\XslCompiledTransform\Provider.cs" />
-    <Compile Include="BaseControls\BaseXmlControl.cs">
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
+    <Compile Include="BaseControls\BaseXmlControl.cs" />
     <Content Include="License.htm" />
     <Content Include="releasenotes.htm" />
     <Content Include="XmlModule.ascx" />
