@@ -60,6 +60,17 @@ namespace DotNetNuke.Modules.Xml.Providers.XmlRenderingProvider.XslCompiledTrans
             }
         }
 
+        private bool EnableScript
+        {
+            get
+            {
+                bool enableScript;
+                var tryParse = bool.TryParse(GetComponentSettings()["enableScript"].DefaultIfNullOrEmpty(bool.FalseString), out enableScript);
+                if (!tryParse) enableScript = false;
+                return enableScript;
+            }
+        }
+
         public override void Render(XmlReader reader, TextWriter output, Page page, ModuleInfo moduleConfiguration)
         {
             var settings = moduleConfiguration.ModuleSettings;
@@ -99,7 +110,7 @@ namespace DotNetNuke.Modules.Xml.Providers.XmlRenderingProvider.XslCompiledTrans
         /// <param name = "contentUrl">The url to the xsl text</param>
         /// <param name = "prohibitDtd"></param>
         /// <returns>A XslCompiledTransform</returns>
-        private static System.Xml.Xsl.XslCompiledTransform GetXslContentByWebRequest(string contentUrl, bool prohibitDtd, bool enableDocument)
+        private static System.Xml.Xsl.XslCompiledTransform GetXslContentByWebRequest(string contentUrl, bool prohibitDtd, bool enableDocument, bool enableScript)
         {
             var xslCompiledTransform = new System.Xml.Xsl.XslCompiledTransform();
             var req = Globals.GetExternalRequest(contentUrl);
@@ -111,7 +122,7 @@ namespace DotNetNuke.Modules.Xml.Providers.XmlRenderingProvider.XslCompiledTrans
                     {
                         using (var objXslTransform = XmlReader.Create(receiveStream, new XmlReaderSettings {ProhibitDtd = prohibitDtd}))
                         {
-                            var settings = new XsltSettings(enableDocument, false);
+                            var settings = new XsltSettings(enableDocument, enableScript);
                             xslCompiledTransform.Load(objXslTransform, settings, new XmlUrlResolver());
                         }
                     }
@@ -131,13 +142,13 @@ namespace DotNetNuke.Modules.Xml.Providers.XmlRenderingProvider.XslCompiledTrans
                 switch (Globals.GetURLType(xslsrc))
                 {
                     case TabType.Url:
-                        return GetXslContentByWebRequest(xslsrc, ProhibitDtd,EnableDocument );
+                        return GetXslContentByWebRequest(xslsrc, ProhibitDtd, EnableDocument, EnableScript);
                     default:
                         
                         var trans = new System.Xml.Xsl.XslCompiledTransform();
                         using (var compiledStylesheet = Utils.CreateXmlReader(xslsrc, portalId, ProhibitDtd))
                         {
-                            var settings = new XsltSettings(EnableDocument, false);
+                            var settings = new XsltSettings(EnableDocument, EnableScript);
                             trans.Load(compiledStylesheet, settings, new XmlUrlResolver() );
                         }
                         

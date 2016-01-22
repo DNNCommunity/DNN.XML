@@ -17,6 +17,7 @@
 //  DEALINGS IN THE SOFTWARE.
 // 
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Web;
 using System.Web.UI;
@@ -25,6 +26,7 @@ using DotNetNuke.Data;
 using DotNetNuke.Entities.Modules;
 using DotNetNuke.Modules.Xml.Providers.XmlDataProvider;
 using DotNetNuke.Modules.Xml.Providers.XmlRenderingProvider;
+using DotNetNuke.Services.Search;
 
 namespace DotNetNuke.Modules.Xml.Components
 {
@@ -128,7 +130,13 @@ namespace DotNetNuke.Modules.Xml.Components
         /// </summary>
         public void ClearSearchIndex()
         {
-            DataProvider.Instance().DeleteSearchItems(ModuleId);
+            // FIX: for Error CS1061  'DataProvider' does not contain a definition for 'DeleteSearchItems' and no extension method 'DeleteSearchItems' accepting a first argument of type 'DataProvider' could be found(are you missing a using directive or an assembly reference ?)	Xml D:\Materijali\SD\Portal2015\Dev\Prototips\DNN.XML\Components\XmlBaseController.cs   132 Active
+            //DataProvider.Instance().DeleteSearchItems(ModuleId);
+            var moduleSearchItems = SearchDataStoreController.GetSearchItems(ModuleId);
+            foreach (var searchItem in moduleSearchItems)
+            {
+                SearchDataStoreController.DeleteSearchItem(searchItem.Value.SearchItemId);
+            }
         }
 
 
