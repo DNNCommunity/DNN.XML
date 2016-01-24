@@ -1,0 +1,859 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DotNetNuke.Modules.Xml</name>
+    </assembly>
+    <members>
+        <member name="T:DotNetNuke.Modules.Xml.Components.FeatureController">
+            -----------------------------------------------------------------------------
+            <summary>
+              The Controller class for Xml Module
+            </summary>
+            -----------------------------------------------------------------------------
+        </member>
+        <member name="M:DotNetNuke.Modules.Xml.Components.FeatureController.ExportModule(System.Int32)">
+            <summary>
+              IPortable: Export
+            </summary>
+        </member>
+        <member name="M:DotNetNuke.Modules.Xml.Components.FeatureController.ImportModule(System.Int32,System.String,System.String,System.Int32)">
+            <summary>
+              IPortable:Import
+            </summary>
+        </member>
+        <member name="M:DotNetNuke.Modules.Xml.Components.FeatureController.GetSearchItems(DotNetNuke.Entities.Modules.ModuleInfo)">
+            <summary>
+              DotNetNuke Search support
+            </summary>
+        </member>
+        <member name="M:DotNetNuke.Modules.Xml.Components.FeatureController.MustAddContentToSearch(DotNetNuke.Entities.Modules.ModuleInfo)">
+            <summary>
+              Determines whether the module should be indexed or not.
+            </summary>
+        </member>
+        <member name="M:DotNetNuke.Modules.Xml.Components.Definition.ParseIndexRun(System.String)">
+            <summary>
+              Converts a string representation of a <see cref = "T:DotNetNuke.Modules.Xml.Components.IndexRun" /> to its object value.
+            </summary>
+            <param name = "value">Value to convert.</param>
+        </member>
+        <member name="M:DotNetNuke.Modules.Xml.Components.Definition.ConvertIndexRunToString(DotNetNuke.Modules.Xml.Components.IndexRun)">
+            <summary>
+              Converts the <see cref = "T:DotNetNuke.Modules.Xml.Components.IndexRun" /> to a string value.
+            </summary>
+        </member>
+        <member name="M:DotNetNuke.Modules.Xml.Components.Utils.DefaultIfNullOrEmpty(System.Object,System.String)">
+            <summary>
+              Returns the value as string if the object isn't null or empty. Otherwise it is replaced by the default string
+            </summary>
+            <param name = "value"></param>
+            <param name = "default"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DotNetNuke.Modules.Xml.Components.Utils.CheckWebPermission(System.String)">
+            <summary>
+              determines whether the current Security grants the need permissions to connect to the url
+            </summary>
+            <param name = "url"></param>
+            <returns></returns>
+            <remarks>
+              Helpful in Medium Trust environment.
+            </remarks>
+        </member>
+        <member name="P:DotNetNuke.Modules.Xml.Components.XmlBaseController.XmlSource">
+            <summary>
+              Accesses the Xml Source as XmlReader
+            </summary>
+            <remarks>
+              The xml source is retrieved from a file or an extern resource.
+              If it fails, a default &lt;noData&gt; is returned.
+            </remarks>
+        </member>
+        <member name="P:DotNetNuke.Modules.Xml.Components.XmlBaseController.FileName">
+            <summary>
+              Returns a default filename for a separate download
+            </summary>
+        </member>
+        <member name="M:DotNetNuke.Modules.Xml.Components.XmlBaseController.Render(System.IO.TextWriter)">
+            <summary>
+              Returns the result of the XSL Transformation into a TextWriter.
+            </summary>
+        </member>
+        <member name="M:DotNetNuke.Modules.Xml.Components.XmlBaseController.Render(System.IO.Stream)">
+            <summary>
+              Returns the result of the XSL transformation into a Stream
+            </summary>
+        </member>
+        <member name="M:DotNetNuke.Modules.Xml.Components.XmlBaseController.ClearSearchIndex">
+            <summary>
+              Clears the indexed content of the DotNetNuke search for this module
+            </summary>
+        </member>
+        <member name="M:DotNetNuke.Modules.Xml.Components.XmlBaseController.CheckShowMode(System.String)">
+            <summary>
+              Returns the way how the module is rendered (<see cref = "T:DotNetNuke.Modules.Xml.Components.ShowMode"></see>).
+            </summary>
+        </member>
+        <member name="F:DotNetNuke.Modules.Xml.Providers.XmlRenderingProvider.XslCompiledTransform.Settings.lblXslDefinition">
+            <summary>
+            lblXslDefinition control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Xml.Providers.XmlRenderingProvider.XslCompiledTransform.Settings.divXslSettings">
+            <summary>
+            divXslSettings control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Xml.Providers.XmlRenderingProvider.XslCompiledTransform.Settings.dshXslParams">
+            <summary>
+            dshXslParams control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Xml.Providers.XmlRenderingProvider.XslCompiledTransform.Settings.sectXslParams">
+            <summary>
+            sectXslParams control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="M:DotNetNuke.Modules.Xml.Providers.XmlRenderingProvider.XslCompiledTransform.Provider.GetXslContentByWebRequest(System.String,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+              GetXSLContent loads the xsl content into an Xsl.XslCompiledTransform
+            </summary>
+            <param name = "contentUrl">The url to the xsl text</param>
+            <param name = "prohibitDtd"></param>
+            <returns>A XslCompiledTransform</returns>
+        </member>
+        <member name="M:DotNetNuke.Modules.Xml.Providers.XmlRenderingProvider.XslCompiledTransform.Provider.GetXslTransform(System.String,System.Int32)">
+            <summary>
+              Loads the stylesheet into the transform engine
+            </summary>
+        </member>
+        <member name="F:DotNetNuke.Modules.Xml.Providers.XmlDataProvider.File.Settings.FileControl">
+            <summary>
+            FileControl control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="M:DotNetNuke.Modules.Xml.Providers.XmlDataProvider.HttpRequest.Provider.GetQueryStringEncoding(System.String)">
+            <summary>
+              Returns the needed <see cref = "T:System.Text.Encoding" /> for the query string parameter out of settings.
+            </summary>
+        </member>
+        <member name="M:DotNetNuke.Modules.Xml.Providers.XmlDataProvider.HttpRequest.Provider.GetXmlContent(System.String,DotNetNuke.Modules.Xml.Components.Credential,System.Boolean)">
+            <summary>
+              GetXMLContent loads the xml content from a web resource into an XmlReader.
+            </summary>
+            <param name = "contentUrl"></param>
+            <param name = "credential"></param>
+            <param name="useCache"></param>
+            <returns>A Xml Reader</returns>
+        </member>
+        <member name="F:DotNetNuke.Modules.Xml.Providers.XmlDataProvider.HttpRequest.Settings.Label1">
+            <summary>
+            Label1 control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Xml.Providers.XmlDataProvider.HttpRequest.Settings.ctlUrlxml">
+            <summary>
+            ctlUrlxml control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Xml.Providers.XmlDataProvider.HttpRequest.Settings.divUrlSettings">
+            <summary>
+            divUrlSettings control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Xml.Providers.XmlDataProvider.HttpRequest.Settings.plCaching">
+            <summary>
+            plCaching control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Xml.Providers.XmlDataProvider.HttpRequest.Settings.cbxCaching">
+            <summary>
+            cbxCaching control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Xml.Providers.XmlDataProvider.HttpRequest.Settings.dshUrlParams">
+            <summary>
+            dshUrlParams control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Xml.Providers.XmlDataProvider.HttpRequest.Settings.sectXmlParam">
+            <summary>
+            sectXmlParam control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Xml.Providers.XmlDataProvider.HttpRequest.Settings.pedSource">
+            <summary>
+            pedSource control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Xml.Providers.XmlDataProvider.HttpRequest.Settings.dshQueryStringEncoding">
+            <summary>
+            dshQueryStringEncoding control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Xml.Providers.XmlDataProvider.HttpRequest.Settings.sectQueryStringEncoding">
+            <summary>
+            sectQueryStringEncoding control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Xml.Providers.XmlDataProvider.HttpRequest.Settings.plQueryStringEncoding">
+            <summary>
+            plQueryStringEncoding control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Xml.Providers.XmlDataProvider.HttpRequest.Settings.rblQueryStringEncoding">
+            <summary>
+            rblQueryStringEncoding control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Xml.Providers.XmlDataProvider.HttpRequest.Settings.dshSecurity">
+            <summary>
+            dshSecurity control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Xml.Providers.XmlDataProvider.HttpRequest.Settings.tblSecurity">
+            <summary>
+            tblSecurity control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Xml.Providers.XmlDataProvider.HttpRequest.Settings.lblDomain">
+            <summary>
+            lblDomain control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Xml.Providers.XmlDataProvider.HttpRequest.Settings.txtAccount">
+            <summary>
+            txtAccount control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Xml.Providers.XmlDataProvider.HttpRequest.Settings.lblPassword">
+            <summary>
+            lblPassword control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Xml.Providers.XmlDataProvider.HttpRequest.Settings.txtPassword">
+            <summary>
+            txtPassword control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="M:DotNetNuke.Modules.Xml.XmlModule.Page_Load(System.Object,System.EventArgs)">
+            -----------------------------------------------------------------------------
+            <summary>
+              Page_Load runs when the control is loaded
+            </summary>
+            -----------------------------------------------------------------------------
+        </member>
+        <member name="F:DotNetNuke.Modules.Xml.XmlModule.lnkShowContent">
+            <summary>
+            lnkShowContent control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="M:DotNetNuke.Modules.Xml.EditXml.CheckWhetherParametersAreDynamic">
+            <summary>
+              Check whether parameters are dynamic
+            </summary>
+        </member>
+        <member name="M:DotNetNuke.Modules.Xml.EditXml.UrlAccessIsPermitted">
+            <summary>
+              Check needed permissions  (Medium trust)
+            </summary>
+        </member>
+        <member name="M:DotNetNuke.Modules.Xml.EditXml.LoadXmlDataProviderSettingsControl">
+            <summary>
+              Bind XML Source settings
+            </summary>
+        </member>
+        <member name="F:DotNetNuke.Modules.Xml.EditXml.dshXmlSource">
+            <summary>
+            dshXmlSource control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Xml.EditXml.secXmlSource">
+            <summary>
+            secXmlSource control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Xml.EditXml.lblXmlSource">
+            <summary>
+            lblXmlSource control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Xml.EditXml.lblXmlSourceType">
+            <summary>
+            lblXmlSourceType control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Xml.EditXml.rblXmlDataProvider">
+            <summary>
+            rblXmlDataProvider control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Xml.EditXml.SourceSettingsPlaceHolder">
+            <summary>
+            SourceSettingsPlaceHolder control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Xml.EditXml.dshXslTrans">
+            <summary>
+            dshXslTrans control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Xml.EditXml.secXslTrans">
+            <summary>
+            secXslTrans control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Xml.EditXml.Label1">
+            <summary>
+            Label1 control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Xml.EditXml.rblXmlRendering">
+            <summary>
+            rblXmlRendering control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Xml.EditXml.XmlRenderingPlaceHolder">
+            <summary>
+            XmlRenderingPlaceHolder control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Xml.EditXml.dshAdvanced">
+            <summary>
+            dshAdvanced control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Xml.EditXml.secAdvanced">
+            <summary>
+            secAdvanced control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Xml.EditXml.tblAdvanced">
+            <summary>
+            tblAdvanced control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Xml.EditXml.lblOutput">
+            <summary>
+            lblOutput control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Xml.EditXml.plOutput">
+            <summary>
+            plOutput control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Xml.EditXml.rblOutput">
+            <summary>
+            rblOutput control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Xml.EditXml.plContentType">
+            <summary>
+            plContentType control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Xml.EditXml.rblContentType">
+            <summary>
+            rblContentType control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Xml.EditXml.lblSearch">
+            <summary>
+            lblSearch control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Xml.EditXml.plIndexRun">
+            <summary>
+            plIndexRun control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Xml.EditXml.rblIndexRun">
+            <summary>
+            rblIndexRun control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Xml.EditXml.lblDynamicParameter">
+            <summary>
+            lblDynamicParameter control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Xml.EditXml.cmdClearSearchIndex">
+            <summary>
+            cmdClearSearchIndex control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Xml.EditXml.lblEnableByQuerystring">
+            <summary>
+            lblEnableByQuerystring control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Xml.EditXml.plEnableParam">
+            <summary>
+            plEnableParam control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Xml.EditXml.txtEnableParam">
+            <summary>
+            txtEnableParam control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Xml.EditXml.plEnableValue">
+            <summary>
+            plEnableValue control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Xml.EditXml.txtEnableValue">
+            <summary>
+            txtEnableValue control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Xml.EditXml.cmdClearEnableByParam">
+            <summary>
+            cmdClearEnableByParam control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Xml.EditXml.cmdUpdate">
+            <summary>
+            cmdUpdate control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Xml.EditXml.cmdCancel">
+            <summary>
+            cmdCancel control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="M:DotNetNuke.Modules.Xml.Parameters.ParameterController.AddParameter(DotNetNuke.Modules.Xml.Parameters.ParameterInfo)">
+            <summary>
+              Creates a new  object in the data store.
+            </summary>
+            <param name = "parameter">Parameter object.</param>
+        </member>
+        <member name="M:DotNetNuke.Modules.Xml.Parameters.ParameterController.GetParameter(DotNetNuke.Modules.Xml.Parameters.ParameterInfo.UniqueKey)">
+            <summary>
+              Retrieves an existing  object from the data store.
+            </summary>
+            <param name = "key">Parameter identifier.</param>
+        </member>
+        <member name="M:DotNetNuke.Modules.Xml.Parameters.ParameterController.GetParameters(System.Int32)">
+            <summary>
+              Retrieves a collection of  objects from the data store.
+            </summary>
+            <param name = "moduleId">Module identifier.</param>
+        </member>
+        <member name="M:DotNetNuke.Modules.Xml.Parameters.ParameterController.UpdateParameter(DotNetNuke.Modules.Xml.Parameters.ParameterInfo)">
+            <summary>
+              Updates an existing  object in the data store.
+            </summary>
+            <param name = "parameter">Parameter object.</param>
+        </member>
+        <member name="M:DotNetNuke.Modules.Xml.Parameters.ParameterController.DeleteParameter(DotNetNuke.Modules.Xml.Parameters.ParameterInfo.UniqueKey)">
+            <summary>
+              Removes an existing  object from the data store.
+            </summary>
+            <param name = "key">Parameter identifier.</param>
+        </member>
+        <member name="T:DotNetNuke.Modules.Xml.Parameters.ParameterEditor.Constants">
+            <summary>
+              Represents misc constants for the <see cref = "T:DotNetNuke.Modules.Xml.Parameters.ParameterEditor" /> control.
+            </summary>
+        </member>
+        <member name="T:DotNetNuke.Modules.Xml.Parameters.ParameterEditor.ControlNames">
+            <summary>
+              Represents child control names for the <see cref = "T:DotNetNuke.Modules.Xml.Parameters.ParameterEditor" /> control.
+            </summary>
+        </member>
+        <member name="T:DotNetNuke.Modules.Xml.Parameters.ParameterEditor.LocaleKeys">
+            <summary>
+              Represents localization keys for the <see cref = "T:DotNetNuke.Modules.Xml.Parameters.ParameterEditor" /> control.
+            </summary>
+        </member>
+        <member name="M:DotNetNuke.Modules.Xml.Parameters.ParameterEditor.BindParameters(System.Boolean)">
+            <summary>
+              Binds the <see cref = "T:DotNetNuke.Modules.Xml.Parameters.ParameterInfo" /> settings.
+            </summary>
+            <param name = "showAddRow">Specifies whether an additional edit row should be displayed.</param>
+        </member>
+        <member name="M:DotNetNuke.Modules.Xml.Parameters.ParameterEditor.SaveParameterEditRow(System.Object)">
+            <summary>
+              Saves the <see cref = "F:DotNetNuke.Modules.Xml.Parameters.ParameterEditor.grdParams" /> edit row.
+            </summary>
+            <param name = "trigger">Object initiating the save.</param>
+        </member>
+        <member name="F:DotNetNuke.Modules.Xml.Parameters.ParameterEditor.grdParams">
+            <summary>
+            grdParams control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Xml.Parameters.ParameterEditor.ErrorMessagePlaceHolder">
+            <summary>
+            ErrorMessagePlaceHolder control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="F:DotNetNuke.Modules.Xml.Parameters.ParameterEditor.cmdAddParam">
+            <summary>
+            cmdAddParam control.
+            </summary>
+            <remarks>
+            Auto-generated field.
+            To modify move field declaration from designer file to code-behind file.
+            </remarks>
+        </member>
+        <member name="T:DotNetNuke.Modules.Xml.Parameters.ParameterInfo">
+            <summary>
+              Represents a parameter
+            </summary>
+        </member>
+        <member name="M:DotNetNuke.Modules.Xml.Parameters.ParameterInfo.#ctor">
+            <summary>
+              Instantiates a new instance of the <c>Parameter</c> module.
+            </summary>
+        </member>
+        <member name="T:DotNetNuke.Modules.Xml.Parameters.ParameterInfo.UniqueKey">
+            <summary>
+              Represents a unique <see cref = "T:DotNetNuke.Modules.Xml.Parameters.ParameterInfo" />.
+            </summary>
+        </member>
+        <member name="P:DotNetNuke.Modules.Xml.Parameters.ParameterInfo.UniqueKey.Id">
+            <summary>
+              Gets or sets the unique identifier
+            </summary>
+        </member>
+        <member name="P:DotNetNuke.Modules.Xml.Parameters.ParameterInfo.UniqueKey.IsNew">
+            <summary>
+              Gets a value indicating whether the <see cref = "T:DotNetNuke.Modules.Xml.Parameters.ParameterInfo" /> is new.
+            </summary>
+        </member>
+        <member name="P:DotNetNuke.Modules.Xml.Parameters.ParameterInfo.Key">
+            <summary>
+              Gets or sets the unique key.
+            </summary>
+        </member>
+        <member name="P:DotNetNuke.Modules.Xml.Parameters.ParameterInfo.Id">
+            <summary>
+              Gets or sets the unique identifier.
+            </summary>
+        </member>
+        <member name="P:DotNetNuke.Modules.Xml.Parameters.ParameterInfo.IsNew">
+            <summary>
+              Gets a value indicating whether the object is new.
+            </summary>
+        </member>
+        <member name="P:DotNetNuke.Modules.Xml.Parameters.ParameterInfo.ModuleId">
+            <summary>
+              Gets or sets the module identifier.
+            </summary>
+        </member>
+        <member name="P:DotNetNuke.Modules.Xml.Parameters.ParameterInfo.Name">
+            <summary>
+              Gets or sets the parameter name.
+            </summary>
+        </member>
+        <member name="P:DotNetNuke.Modules.Xml.Parameters.ParameterInfo.Type">
+            <summary>
+              Gets or sets the parameter type.
+            </summary>
+        </member>
+        <member name="P:DotNetNuke.Modules.Xml.Parameters.ParameterInfo.TypeArgument">
+            <summary>
+              Gets or sets the parameter type argument.
+            </summary>
+            <remarks>
+              The parameter type argument varies in purpose and usage. For instance, the argument may 
+              represent a value, querystring parameter name, or custom user profile property.
+              It can also be used to store a fallback value that acts as replacement when no value is present.
+            </remarks>
+        </member>
+        <member name="P:DotNetNuke.Modules.Xml.Parameters.ParameterInfo.IsValueRequired">
+            <summary>
+              Gets or sets whether a value is needed.
+            </summary>
+            <remarks>
+              The parameter is only valid if it returns a value different from nothing or empty string.
+            </remarks>
+        </member>
+        <member name="P:DotNetNuke.Modules.Xml.Parameters.ParameterInfo.IsValidDefinition">
+            <summary>
+              Gets a value indicating whether the parameter definition is valid.
+            </summary>
+        </member>
+        <member name="P:DotNetNuke.Modules.Xml.Parameters.ParameterInfo.IsValidValue">
+            <summary>
+              Gets a value indicating whether the parameter is valid.
+            </summary>
+        </member>
+        <member name="M:DotNetNuke.Modules.Xml.Parameters.ParameterInfo.ParseType(System.String)">
+            <summary>
+              Converts a string representation of a <see cref = "T:DotNetNuke.Modules.Xml.Parameters.ParameterType" /> to its object value.
+            </summary>
+            <param name = "type">Value to convert.</param>
+        </member>
+        <member name="M:DotNetNuke.Modules.Xml.Parameters.ParameterInfo.GetValue">
+            <summary>
+              Determines parameter value based on applied settings.
+            </summary>
+        </member>
+        <member name="M:DotNetNuke.Modules.Xml.Parameters.ParameterInfo.IsArgumentRequired">
+            <summary>
+              Determines whether the <see cref = "P:DotNetNuke.Modules.Xml.Parameters.ParameterInfo.TypeArgument" /> is required based on the <see cref = "T:DotNetNuke.Modules.Xml.Parameters.ParameterType" />.
+            </summary>
+        </member>
+        <member name="M:DotNetNuke.Modules.Xml.Parameters.ParameterInfo.SupportsFallbackValue">
+            <summary>
+              Determines whether the  <see cref = "P:DotNetNuke.Modules.Xml.Parameters.ParameterInfo.TypeArgument" /> is allowed as a fallback value.
+            </summary>
+            <returns></returns>
+            <remarks>
+            </remarks>
+        </member>
+        <member name="M:DotNetNuke.Modules.Xml.Parameters.ParameterInfo.ToString(System.Text.Encoding)">
+            <summary>
+              Determines parameter value based on applied settings and on a given <see cref = "T:System.Text.Encoding" />
+            </summary>
+            <param name = "encoding"></param>
+            <returns>paramter value pair (Param=Value)</returns>
+            <remarks>
+            </remarks>
+        </member>
+        <member name="M:DotNetNuke.Modules.Xml.Parameters.ParameterInfo.ToString">
+            <summary>
+              Determines parameter value based on applied settings
+            </summary>
+            <returns></returns>
+            <remarks>
+            </remarks>
+        </member>
+    </members>
+</doc>

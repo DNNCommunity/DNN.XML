@@ -1,14 +1,15 @@
 <dotnetnuke type="Package" version="5.0">
   <packages>
     <package name="DNN_XML" type="Module" version="06.00.04">
-      <friendlyName>Xml Module</friendlyName>
+      <friendlyName>DNN XML Module</friendlyName>
       <description>
-      The DotNetNuke Xml module queries Data as XML and renders it.</description>
+        The DNN XML module queries Data as XML and renders it.
+      </description>
       <owner>
         <name>DotNetNuke Corporation</name>
-        <organization>DotNetNuke Corporation</organization>
+        <organization>DNN Corp.</organization>
         <url>http://www.dotnetnuke.com</url>
-        <email>support@dotnetnuke.com</email>
+        <email>support@dnnsoftware.com</email>
       </owner>
       <license src="License.htm"/>
       <releaseNotes src="ReleaseNotes.htm" />
@@ -94,40 +95,40 @@
               </moduleDefinition>
             </moduleDefinitions>
           </desktopModule>
-        </component>     
+        </component>
         <component type="Config">
           <config>
             <configFile>web.config</configFile>
             <install>
               <configuration>
-                 <nodes>
+                <nodes>
                   <node path="/configuration/configSections/sectionGroup[@name='dotnetnuke'] " action="update" key="name" collision="overwrite">
                     <section name="xmlData" requirePermission="false" type="DotNetNuke.Framework.Providers.ProviderConfigurationHandler, DotNetNuke" />
-                   </node>              
+                  </node>
                   <node path="/configuration/dotnetnuke" action="update" targetpath="/configuration/dotnetnuke/xmlData" collision="ignore">
                     <xmlData defaultProvider="HttpRequestProvider">
                       <providers>
                         <clear />
-                       </providers>
+                      </providers>
                     </xmlData>
                   </node>
-                   <node path="/configuration/dotnetnuke/xmlData/providers" action="update" key="name" collision="overwrite">
-                     <add name="HttpRequestProvider" type="DotNetNuke.Modules.Xml.Providers.XmlDataProvider.HttpRequest.Provider, DotNetNuke.Modules.Xml" providerPath="~\DesktopModules\Xml\Providers\XmlDataProvider\HttpRequest\" />
-                     <add name="FileProvider" type="DotNetNuke.Modules.Xml.Providers.XmlDataProvider.File.Provider, DotNetNuke.Modules.Xml" providerPath="~\DesktopModules\Xml\Providers\XmlDataProvider\File\" />
-                   </node>
-                   <node path="/configuration/configSections/sectionGroup[@name='dotnetnuke'] " action="update" key="name" collision="overwrite">
-                     <section name="xmlRendering" requirePermission="false" type="DotNetNuke.Framework.Providers.ProviderConfigurationHandler, DotNetNuke" />
-                   </node>
-                   <node path="/configuration/dotnetnuke" action="update" targetpath="/configuration/dotnetnuke/xmlRendering" collision="ignore">
-                     <xmlRendering defaultProvider="XslCompiledTransformProvider">
-                       <providers>
-                         <clear />
-                       </providers>
-                     </xmlRendering >
-                   </node>
-                   <node path="/configuration/dotnetnuke/xmlRendering/providers" action="update" key="name" collision="overwrite">
-                     <add name="XslCompiledTransformProvider" type="DotNetNuke.Modules.Xml.Providers.XmlRenderingProvider.XslCompiledTransform.Provider, DotNetNuke.Modules.Xml" providerPath="~\DesktopModules\Xml\Providers\XmlRenderingProvider\XslCompiledTransform\" prohibitDtd="true"/>
-                   </node>
+                  <node path="/configuration/dotnetnuke/xmlData/providers" action="update" key="name" collision="overwrite">
+                    <add name="HttpRequestProvider" type="DotNetNuke.Modules.Xml.Providers.XmlDataProvider.HttpRequest.Provider, DotNetNuke.Modules.Xml" providerPath="~\DesktopModules\Xml\Providers\XmlDataProvider\HttpRequest\" />
+                    <add name="FileProvider" type="DotNetNuke.Modules.Xml.Providers.XmlDataProvider.File.Provider, DotNetNuke.Modules.Xml" providerPath="~\DesktopModules\Xml\Providers\XmlDataProvider\File\" />
+                  </node>
+                  <node path="/configuration/configSections/sectionGroup[@name='dotnetnuke'] " action="update" key="name" collision="overwrite">
+                    <section name="xmlRendering" requirePermission="false" type="DotNetNuke.Framework.Providers.ProviderConfigurationHandler, DotNetNuke" />
+                  </node>
+                  <node path="/configuration/dotnetnuke" action="update" targetpath="/configuration/dotnetnuke/xmlRendering" collision="ignore">
+                    <xmlRendering defaultProvider="XslCompiledTransformProvider">
+                      <providers>
+                        <clear />
+                      </providers>
+                    </xmlRendering >
+                  </node>
+                  <node path="/configuration/dotnetnuke/xmlRendering/providers" action="update" key="name" collision="overwrite">
+                    <add name="XslCompiledTransformProvider" type="DotNetNuke.Modules.Xml.Providers.XmlRenderingProvider.XslCompiledTransform.Provider, DotNetNuke.Modules.Xml" providerPath="~\DesktopModules\Xml\Providers\XmlRenderingProvider\XslCompiledTransform\" prohibitDtd="true"/>
+                  </node>
                 </nodes>
               </configuration>
             </install>
