@@ -76,7 +76,7 @@ namespace DotNetNuke.Modules.Xml
         {
             try
             {
-                var portalSettings = PortalController.GetCurrentPortalSettings();
+                var portalSettings = PortalController.Instance.GetCurrentPortalSettings();
 
                 if (context.Request.QueryString["tabid"] == null || context.Request.QueryString["mid"] == null)
                     return;
@@ -94,11 +94,10 @@ namespace DotNetNuke.Modules.Xml
                     moduleId = Int32.Parse(context.Request.QueryString["mid"]);
                 }
 
-                UserController.GetCurrentUserInfo();
-
-                var moduleController = new ModuleController();
-                var settings = moduleController.GetModuleSettings(moduleId);
-                var moduleInfo = moduleController.GetModule(moduleId, tabId);
+                UserController.Instance.GetCurrentUserInfo();
+                
+                var moduleInfo = ModuleController.Instance.GetModule(moduleId, tabId, false);
+                var settings = moduleInfo.ModuleSettings;
 
                 if (context.Request.QueryString["showsource"] == null)
                 {
@@ -115,7 +114,7 @@ namespace DotNetNuke.Modules.Xml
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 context.Response.Write("Not defined");
             }

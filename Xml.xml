@@ -21,11 +21,6 @@
               IPortable:Import
             </summary>
         </member>
-        <member name="M:DotNetNuke.Modules.Xml.Components.FeatureController.GetSearchItems(DotNetNuke.Entities.Modules.ModuleInfo)">
-            <summary>
-              DotNetNuke Search support
-            </summary>
-        </member>
         <member name="M:DotNetNuke.Modules.Xml.Components.FeatureController.MustAddContentToSearch(DotNetNuke.Entities.Modules.ModuleInfo)">
             <summary>
               Determines whether the module should be indexed or not.

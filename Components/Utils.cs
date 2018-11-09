@@ -21,6 +21,7 @@ using System.IO;
 using System.Net;
 using System.Security;
 using System.Security.Cryptography;
+using System.Security.Permissions;
 using System.Text;
 using System.Xml;
 using DotNetNuke.Common.Utilities;
@@ -57,7 +58,9 @@ namespace DotNetNuke.Modules.Xml.Components
         /// </remarks>
         public static bool CheckWebPermission(string url)
         {
-            return SecurityManager.IsGranted(new WebPermission(NetworkAccess.Connect, url));
+            var permissionSet = new PermissionSet(System.Security.Permissions.PermissionState.None);
+            permissionSet.AddPermission(new WebPermission(NetworkAccess.Connect, url));
+            return permissionSet.IsSubsetOf(AppDomain.CurrentDomain.PermissionSet);
         }
 
         public static bool IsOfSameTypeAs(this object a, object b)
@@ -69,10 +72,11 @@ namespace DotNetNuke.Modules.Xml.Components
 
         public static XmlReader CreateXmlReader(string xmlsrc, int portalId, bool prohibitDtd)
         {
-            if (xmlsrc == String.Empty) return null;
-            var filecontroller = new FileController();
-            var xmlFileInfo = filecontroller.GetFileById(filecontroller.ConvertFilePathToFileId(xmlsrc, portalId), portalId);
-            return XmlReader.Create(FileSystemUtils.GetFileStream(xmlFileInfo), new XmlReaderSettings {ProhibitDtd = prohibitDtd});
+            if (xmlsrc == String.Empty) return null;            
+            var xmlFileInfo = FileManager.Instance.GetFile(portalId, xmlsrc, true);
+            var xmlSettings = new XmlReaderSettings();
+            xmlSettings.DtdProcessing = DtdProcessing.Prohibit;
+            return XmlReader.Create(FileManager.Instance.GetFileContent(xmlFileInfo), xmlSettings);
         }
 
         public static XmlReader CreateXmlReader(string xmlsrc, int portalId)

@@ -120,7 +120,9 @@ namespace DotNetNuke.Modules.Xml.Providers.XmlRenderingProvider.XslCompiledTrans
                 {
                     if (receiveStream != null)
                     {
-                        using (var objXslTransform = XmlReader.Create(receiveStream, new XmlReaderSettings {ProhibitDtd = prohibitDtd}))
+                        var xmlReaderSettings = new XmlReaderSettings();
+                        xmlReaderSettings.DtdProcessing = DtdProcessing.Prohibit;
+                        using (var objXslTransform = XmlReader.Create(receiveStream, xmlReaderSettings ))
                         {
                             var settings = new XsltSettings(enableDocument, enableScript);
                             xslCompiledTransform.Load(objXslTransform, settings, new XmlUrlResolver());

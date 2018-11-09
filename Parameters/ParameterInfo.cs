@@ -295,7 +295,7 @@ namespace DotNetNuke.Modules.Xml.Parameters
                 default:
                     // user property
                     // get current user
-                    var objUser = UserController.GetCurrentUserInfo();
+                    var objUser = UserController.Instance.GetCurrentUserInfo();
 
                     // handle user property
                     switch (ParseType(Type))
@@ -361,7 +361,7 @@ namespace DotNetNuke.Modules.Xml.Parameters
                             return objUser.Profile.PreferredLocale.DefaultIfNullOrEmpty(TypeArgument);
                         case ParameterType.UserTimeZone:
 
-                            return objUser.Profile.TimeZone.DefaultIfNullOrEmpty(TypeArgument);
+                            return objUser.Profile.PreferredTimeZone.DefaultIfNullOrEmpty(TypeArgument);
                         case ParameterType.UserIsAuthorized:
 
                             return objUser.Membership.Approved.DefaultIfNullOrEmpty(TypeArgument);
