@@ -56,6 +56,11 @@
       <SpecificVersion>False</SpecificVersion>
       <Private>False</Private>
     </Reference>
+    <Reference Include="DotNetNuke.Web.Client, Version=8.0.1.239, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\DotNetNuke.Web.Client.8.0.1.239\lib\net40\DotNetNuke.Web.Client.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="DotNetNuke.WebUtility, Version=4.2.1.783, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>packages\DotNetNuke.Web.8.0.0.809\lib\net40\DotNetNuke.WebUtility.dll</HintPath>
       <SpecificVersion>False</SpecificVersion>

@@ -18,14 +18,18 @@
 // 
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using System.Xml;
 using DotNetNuke.Common;
+using DotNetNuke.Common.Utilities;
 using DotNetNuke.Entities.Modules;
 using DotNetNuke.Entities.Portals;
 using DotNetNuke.Modules.Xml.Providers.XmlDataProvider;
 using DotNetNuke.Modules.Xml.Providers.XmlRenderingProvider;
 using DotNetNuke.Services.Search;
+using DotNetNuke.Services.Search.Entities;
+using DotNetNuke.Services.Search.Internals;
 
 namespace DotNetNuke.Modules.Xml.Components
 {
@@ -34,8 +38,39 @@ namespace DotNetNuke.Modules.Xml.Components
     ///   The Controller class for Xml Module
     /// </summary>
     /// -----------------------------------------------------------------------------
-    public class FeatureController : IPortable, ISearchable
+    public class FeatureController : ModuleSearchBase, IPortable
     {
+        #region ModuleSearchBase Implementation
+        public override IList<SearchDocument> GetModifiedSearchDocuments(ModuleInfo moduleInfo, DateTime beginDateUtc)
+        {
+            var controller = new XmlBaseController(moduleInfo);
+            var portalId = moduleInfo.PortalID;
+            var administratorId = PortalController.Instance.GetPortal(portalId).AdministratorId;
+
+            var searchDocuments = new List<SearchDocument>();
+            InternalSearchController.Instance.DeleteSearchDocumentsByModule(portalId, moduleInfo.ModuleID, moduleInfo.ModuleDefID);
+            if (MustAddContentToSearch(moduleInfo))
+            {
+                var sw = new StringWriter();
+                controller.Render(sw);
+                sw.Flush();
+                var content = sw.ToString();
+                var now = DateTime.Now;
+
+                var searchDoc = new SearchDocument();
+                searchDoc.Title = moduleInfo.ModuleTitle;
+                searchDoc.Description = content;
+                searchDoc.AuthorUserId = administratorId;
+                searchDoc.ModifiedTimeUtc = now;
+                searchDoc.ModuleId = moduleInfo.ModuleID;
+                searchDoc.Body = content;
+
+                searchDocuments.Add(searchDoc);
+            }
+            return searchDocuments;
+        }
+        #endregion
+        
         #region IPortable Members
 
         /// <summary>
@@ -43,7 +78,8 @@ namespace DotNetNuke.Modules.Xml.Components
         /// </summary>
         public string ExportModule(int moduleId)
         {
-            var settings = new ModuleController().GetModuleSettings(moduleId);
+            var moduleInfo = ModuleController.Instance.GetModule(moduleId, Null.NullInteger, false);
+            var settings = moduleInfo.ModuleSettings;
             //start export
             var strXml = new StringWriter();
             XmlWriter writer = new XmlTextWriter(strXml);
@@ -106,36 +142,7 @@ namespace DotNetNuke.Modules.Xml.Components
         }
 
         #endregion
-
-        #region ISearchable Members
-
-        ///<summary>
-        ///  DotNetNuke Search support
-        ///</summary>
-        public SearchItemInfoCollection GetSearchItems(ModuleInfo modInfo)
-        {
-            var controller = new XmlBaseController(modInfo);
-
-            var portalId = modInfo.PortalID;
-            var administratorId = new PortalController().GetPortal(portalId).AdministratorId;
-
-            var searchItemCollection = new SearchItemInfoCollection();
-            if (MustAddContentToSearch(modInfo))
-            {
-                var sw = new StringWriter();
-                controller.Render(sw);
-                sw.Flush();
-                var content = sw.ToString();
-                var now = DateTime.Now;
-                searchItemCollection.Add(new SearchItemInfo(modInfo.ModuleTitle, content, administratorId, now, modInfo.ModuleID, "", content));
-                var mc = new ModuleController();
-                mc.UpdateModuleSetting(modInfo.ModuleID, Setting.LastIndexRun, DateTime.Now.ToString("s"));
-            }
-            return searchItemCollection;
-        }
-
-        #endregion
-
+       
         /// <summary>
         ///   Determines whether the module should be indexed or not.
         /// </summary>
@@ -160,6 +167,6 @@ namespace DotNetNuke.Modules.Xml.Components
                 default:
                     return false;
             }
-        }
+        }        
     }
 }

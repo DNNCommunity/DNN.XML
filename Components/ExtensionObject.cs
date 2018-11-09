@@ -20,6 +20,7 @@ using System.Web.UI;
 using DotNetNuke.Common;
 using DotNetNuke.Entities.Modules;
 using DotNetNuke.Framework;
+using DotNetNuke.Web.Client.ClientResourceManagement;
 
 namespace DotNetNuke.Modules.Xml.Components
 {
@@ -79,7 +80,7 @@ namespace DotNetNuke.Modules.Xml.Components
         {
             if ((_page != null) && (_page) is CDefault)
             {
-                ((CDefault) _page).AddStyleSheet(Globals.CreateValidID(href), href);
+                ClientResourceManager.RegisterStyleSheet(_page, href);
             }
         }
 
