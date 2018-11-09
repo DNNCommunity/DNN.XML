@@ -31,7 +31,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <OutputPath>..\..\bin\</OutputPath>
     <DocumentationFile>Xml.xml</DocumentationFile>
-    <WarningLevel>1</WarningLevel>
+    <WarningLevel>2</WarningLevel>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
