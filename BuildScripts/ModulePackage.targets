@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="windows-1252"?>
 <Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <!--<Import Project="..\..\packages\MSBuildTasks.1.4.0.128\tools\MSBuild.Community.Tasks.Targets" />-->
+ <Import Project="..\packages\MSBuildTasks.1.5.0.235\tools\MSBuild.Community.Tasks.Targets" />
 
   <Target Name="PackageModule" Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <XmlRead Prefix="n"
