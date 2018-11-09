@@ -1,6 +1,6 @@
 <dotnetnuke type="Package" version="5.0">
   <packages>
-    <package name="DNN_XML" type="Module" version="06.00.04">
+    <package name="DNN_XML" type="Module" version="06.00.05">
       <friendlyName>DNN XML Module</friendlyName>
       <description>
         The DNN XML module queries Data as XML and renders it.
@@ -14,7 +14,7 @@
       <license src="License.htm"/>
       <releaseNotes src="ReleaseNotes.htm" />
       <dependencies>
-        <dependency type="CoreVersion">07.04.02</dependency>
+        <dependency type="CoreVersion">08.00.00</dependency>
       </dependencies>
       <components>
         <component type="Cleanup" version="06.00.01" fileName="Cleanup_06.00.01.txt" />
@@ -43,8 +43,8 @@
         </component>
         <component type="Assembly">
           <assemblies>
-            <basePath>bin</basePath>
             <assembly>
+              <path>bin</path>
               <name>DotNetNuke.Modules.Xml.dll</name>
             </assembly>
           </assemblies>
